@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+import django_js_reverse.views
 
 urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^tweet/', include('tweet.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^jsreverse/$', django_js_reverse.views.urls_js, name='js_reverse'),
 ]
