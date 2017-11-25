@@ -2,7 +2,10 @@
 
 /node_modules/
 bundles/
+/npm-debug.log
+/webpack-stats.json
 
 *.sqlite3
 __pycache__/
+
 
