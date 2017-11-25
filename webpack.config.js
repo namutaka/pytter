@@ -74,9 +74,17 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery",
-      // Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
+      Dialog: 'material-ui/Dialog',
+      Divider: 'material-ui/Divider',
+      FontIcon: 'material-ui/FontIcon',
+      Paper: 'material-ui/Paper',
+      RaisedButton: 'material-ui/RaisedButton',
+      Subheader: 'material-ui/Subheader',
+      TextField: 'material-ui/TextField',
+      List: ['material-ui/List', 'List'],
+      ListItem: ['material-ui/List', 'ListItem'],
+      Colors: 'material-ui/styles/colors',
     }),
-
 
     // local
     new webpack.HotModuleReplacementPlugin(),
@@ -91,5 +99,6 @@ module.exports = {
     historyApiFallback: true,
     port: 3000,
     headers: { 'Access-Control-Allow-Origin': '*' },
-  }
+  },
+  devtool: 'cheap-module-eval-source-map',
 }
