@@ -1,0 +1,25 @@
+{% extends 'tweet/base.html' %}
+
+{% block content %}
+<div>
+  <a href="{% url 'accounts:logout' %}">logout</a>
+</div>
+
+<div>
+  Tweet
+</div>
+<div>
+  {{ request.user }}
+</div>
+
+<div>
+  {{ tweet.text }}
+</div>
+
+<pre>
+  {{ tweet| pprint }}
+</pre>
+<pre>
+{{ author | pprint }}
+</pre>
+{% endblock %}
