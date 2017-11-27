@@ -6,10 +6,19 @@ from tweet.models import Account, Tweet
 @login_required
 def tweets(request):
     account = request.user.account
+
     tweets = Tweet.objects.filter(
         Q(author__follower = account) | \
         Q(author = account)
-    ).order_by('-created_at')
+    )
+
+    if 'since' in request.GET and \
+        request.GET['since'] != 'null':
+        tweets = tweets.filter(
+            created_at__gt = request.GET['since']
+        )
+
+    tweets = tweets.order_by('-created_at')
 
     return JsonResponse({
         'tweets': [ tweet.to_dict() for tweet in tweets]

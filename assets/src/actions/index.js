@@ -9,9 +9,9 @@ const POST_TWEET = 'POST_TWEET'
 
 export const getTweets = createAction(
   GET_TWEETS,
-  async () => {
+  async (since) => {
     var res = await fetch(
-      Urls['tweet_api:tweets'](),
+      Urls['tweet_api:tweets']() + '?since=' + since,
       {
         mode: 'cors',
         credentials: 'include'

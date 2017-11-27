@@ -10,13 +10,18 @@ class App extends Component {
     this.state = {
     }
 
-    this.timer = setInterval(() => this.props.getTweets(), 1000)
+    this.timer = setInterval(() => this.getTweets(), 1000)
 
     this.handlePost = this.handlePost.bind(this)
+    this.getTweets = this.getTweets.bind(this)
   }
 
   componentWillMount() {
-    this.props.getTweets()
+  }
+
+  getTweets() {
+    const { timeline } = this.props
+    this.props.getTweets(timeline.updated_at)
   }
 
   componentWillUnmount() {
@@ -28,19 +33,19 @@ class App extends Component {
   }
 
   render() {
-    const { tweets } = this.props
+    const { timeline } = this.props
     return (
       <div className="App">
         <TweetPostForm onPost={this.handlePost}/>
         <br/>
-        <TweetList tweets={tweets} />
+        <TweetList tweets={timeline.tweets} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  tweets: state.tweets
+  timeline: state.timeline
 })
 
 export default connect(mapStateToProps, {

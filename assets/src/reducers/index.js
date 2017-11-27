@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import tweets from './tweets'
+import timeline from './timeline'
 
 const rootReducer = combineReducers({
-  tweets,
+  timeline,
 })
 
 export default rootReducer

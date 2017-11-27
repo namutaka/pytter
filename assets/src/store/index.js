@@ -3,7 +3,10 @@ import reducer from '../reducers'
 import promiseMiddleware from 'redux-promise';
 
 const defaultConfig = {
-  tweets: []
+  timeline: {
+    tweets: [],
+    updated_at: null
+  }
 }
 
 function configureStore() {
