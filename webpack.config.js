@@ -73,9 +73,6 @@ module.exports = {
 
     // 全js内にimportを暗黙定義
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
       Avatar: ['material-ui/Avatar', 'default'],
       Dialog: ['material-ui/Dialog', 'default'],
       Divider: ['material-ui/Divider', 'default'],
