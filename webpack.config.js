@@ -33,7 +33,9 @@ module.exports = {
             options:  {
               cacheDirectory: true,
               plugins: [
-                'react-hot-loader/babel'
+                'react-hot-loader/babel',
+                'transform-class-properties', // class 変数定義を可能にする
+                'transform-object-rest-spread', // {...rest} 表記を可能にする
               ],
               presets: ['react', 'es2015']
             }
@@ -74,16 +76,23 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery",
-      Dialog: 'material-ui/Dialog',
-      Divider: 'material-ui/Divider',
-      FontIcon: 'material-ui/FontIcon',
-      Paper: 'material-ui/Paper',
-      RaisedButton: 'material-ui/RaisedButton',
-      Subheader: 'material-ui/Subheader',
-      TextField: 'material-ui/TextField',
+      Avatar: ['material-ui/Avatar', 'default'],
+      Dialog: ['material-ui/Dialog', 'default'],
+      Divider: ['material-ui/Divider', 'default'],
+      FontIcon: ['material-ui/FontIcon', 'default'],
+      Paper: ['material-ui/Paper', 'default'],
+      RaisedButton: ['material-ui/RaisedButton', 'default'],
+      Subheader: ['material-ui/Subheader', 'default'],
+      TextField: ['material-ui/TextField', 'default'],
       List: ['material-ui/List', 'List'],
       ListItem: ['material-ui/List', 'ListItem'],
-      Colors: 'material-ui/styles/colors',
+      Card: ['material-ui/Card', 'Card'],
+      CardActions: ['material-ui/Card', 'CardActions'],
+      CardHeader: ['material-ui/Card', 'CardHeader'],
+      CardMedia: ['material-ui/Card', 'CardMedia'],
+      CardTitle: ['material-ui/Card', 'CardTitle'],
+      CardText: ['material-ui/Card', 'CardText'],
+      Colors: ['material-ui/styles', 'colors'],
     }),
 
     // local

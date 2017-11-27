@@ -6,6 +6,16 @@ function reducer(state, action) {
       return Object.assign({}, state, {
       })
 
+    case TWEET_API.SUCCESS:
+      return Object.assign({}, state, {
+        tweets: action.json.tweets
+      })
+
+    case TWEET_API.FAILURE:
+      return Object.assign({}, state, {
+        tweets: []
+      })
+
     default:
       return state
   }

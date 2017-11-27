@@ -3,6 +3,7 @@ import reducer from '../reducers'
 import callApiMiddleware from '../middlewares/callApiMiddleware'
 
 const defaultConfig = {
+  tweets: []
 }
 
 function configureStore() {

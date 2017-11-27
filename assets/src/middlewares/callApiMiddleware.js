@@ -10,19 +10,15 @@ export class ApiType {
 function callAPIMiddleware({ dispatch, getState }) {
   return next => action => {
     const {
-      types,
+      type,
       callAPI,
       shouldCallAPI = () => true,
       payload = {}
     } = action
 
-    if (!types) {
+    if (!type || !(type instanceof ApiType)) {
       // Normal action: pass it on
       return next(action)
-    }
-
-    if (!types instanceof ApiType) {
-      throw new Error('Expected an array of three string types.')
     }
 
     if (typeof callAPI !== 'function') {
@@ -33,29 +29,30 @@ function callAPIMiddleware({ dispatch, getState }) {
       return
     }
 
-    const [requestType, successType, failureType] = types
-
-    dispatch(
-      Object.assign({}, payload, {
-        type: requestType
-      })
-    )
+    dispatch({
+      type: type.REQUEST,
+      ...payload
+    })
 
     return callAPI().then(
-      response =>
-        dispatch(
-          Object.assign({}, payload, {
-            response,
-            type: successType
-          })
-        ),
+      response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json()
+    }).then(
+      json =>
+        dispatch({
+          type: type.SUCCESS,
+          json,
+          ...payload
+        }),
       error =>
-        dispatch(
-          Object.assign({}, payload, {
-            error,
-            type: failureType
-          })
-        )
+        dispatch({
+          type: type.FAILURE,
+          error,
+          ...payload
+        })
     )
   }
 }
