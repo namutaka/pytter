@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import reducer from '../reducers'
-import callApiMiddleware from '../middlewares/callApiMiddleware'
+import promiseMiddleware from 'redux-promise';
 
 const defaultConfig = {
   tweets: []
@@ -11,7 +11,7 @@ function configureStore() {
     reducer,
     defaultConfig,
     applyMiddleware(
-      callApiMiddleware
+      promiseMiddleware
     )
   )
 }

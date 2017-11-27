@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadTweet, postTweet } from '../actions'
+import { getTweets, postTweet } from '../actions'
 import TweetList from '../components/TweetList'
 import TweetPostForm from '../components/TweetPostForm'
 
@@ -10,13 +10,13 @@ class App extends Component {
     this.state = {
     }
 
-    this.timer = setInterval(() => this.props.loadTweet(), 1000)
+    this.timer = setInterval(() => this.props.getTweets(), 1000)
 
     this.handlePost = this.handlePost.bind(this)
   }
 
   componentWillMount() {
-    this.props.loadTweet()
+    this.props.getTweets()
   }
 
   componentWillUnmount() {
@@ -44,7 +44,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 export default connect(mapStateToProps, {
-  loadTweet, postTweet
+  getTweets, postTweet
 })(App)
 
 
