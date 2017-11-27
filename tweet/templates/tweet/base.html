@@ -13,7 +13,6 @@
 
   <script src="{% url 'js_reverse' %}" type="text/javascript"></script>
 
-  <link rel="stylesheet" href="style.css" />
   <style>
   body {
     display: flex;
@@ -42,7 +41,6 @@
 
         <ul class="right">
           <li>
-            <a href="sass.html"><i class="material-icons">search</i></a>
             {{ request.user.username }}
           </li>
           <li>
@@ -60,32 +58,23 @@
   </header>
 
   <main>
-    <section>
-      <div class="container">
-        <h3 class="header">DASHBOARD</h3>
-
-        <div id="content">
-          {% block content %}{% endblock %}
-        </div>
-      </div>
-    </section>
+    {% block content %}{% endblock %}
   </main>
 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script>
+      $(".button-collapse").sideNav();
+  </script>
+  {% render_bundle 'main' %}
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        © 2014 Copyright Text
+        © Copyright
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
       </div>
     </div>
   </footer>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-<script>
-    $(".button-collapse").sideNav();
-</script>
-  　{% render_bundle 'main' %}
 </body>
 </html>
 

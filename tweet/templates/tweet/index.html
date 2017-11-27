@@ -1,33 +1,36 @@
 {% extends 'tweet/base.html' %}
 
 {% block content %}
+<section>
+  <div class="container">
+    <h3 class="header">DASHBOARD</h3>
 
-<pre>
-  {{ follows| pprint }}
-</pre>
-<pre>
-{{ followers| pprint }}
-</pre>
+    <div id="content">
 
-<form action="{% url 'tweet:tweet' %}" method="post">
-  {% csrf_token %}
-  <textarea name="text" rows="10" cols="20">
-  </textarea>
-  <input type="submit" value="Tweet" class="btn waves-effect waves-light"/>
-</form>
+      <div>
+        <strong>follows:</strong>
 
-<div class="collection">
-{% for tweet in tweets %}
-<div class="collection-item card-panel">
-  @{{ tweet.author.name }} ( {{ tweet.author.display_name }} )
-  <div class="card-content">
-  {{ tweet.text }}
+       {% for acc in follows %}
+          <div class="chip">
+            {{ acc.name }}
+          </div>
+        {% endfor %}
+      </div>
+
+      <div>
+        <strong>followers:</strong>
+
+        {% for acc in followers %}
+        <div class="chip">
+          {{ acc.name }}
+        </div>
+        {% endfor %}
+      </div>
+
+
+      <div id="root"></div>
+
+    </div>
   </div>
-   <a href="{% url 'tweet:show_tweet' tweet.author.name tweet.id %}">Link</a>
-</div>
-{% endfor %}
-</div>
-
-<div id="root"></div>
-
+</section>
 {% endblock %}
