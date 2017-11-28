@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ReactIntl from 'react-intl/dist/react-intl'
+import { FormattedRelative } from 'react-intl'
 
 class TweetItem extends Component {
   static propTypes = {
@@ -38,7 +38,8 @@ class TweetItem extends Component {
               color: Colors.lightBlack,
               marginLeft: 5
             }}>
-            {tweet.created_at}
+            <FormattedRelative updateInterval={10000}
+              value={new Date(tweet.created_at)} />
           </small>
         </div>
         <div style={{marginTop: 8}}>{ tweet.text }</div>
