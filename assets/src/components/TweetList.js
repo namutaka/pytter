@@ -12,24 +12,21 @@ class TweetList extends Component {
     const { tweets } = this.props
     return (
       <Paper>
-        <List>
-          <TransitionGroup>
-            {tweets.map((tweet, i) =>
-              <CSSTransition key={tweets.length - i}
-                classNames="fademove"
-                timeout={500}>
-                <div>
-                  <TweetItem tweet={tweet} />
-                  <Divider />
-                </div>
-              </CSSTransition>
-            )}
-          </TransitionGroup>
-        </List>
+        <TransitionGroup>
+          {tweets.map((tweet, i) =>
+            <CSSTransition key={tweets.length - i}
+              classNames="fademove"
+              timeout={500}>
+              <div>
+                <TweetItem tweet={tweet} />
+                <Divider />
+              </div>
+            </CSSTransition>
+          )}
+        </TransitionGroup>
       </Paper>
     );
   }
 }
 
 export default TweetList
-
