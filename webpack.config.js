@@ -16,7 +16,8 @@ module.exports = {
 
   output: { // コンパイルされたファイルの設定
       path: path.resolve('./assets/bundles/'),
-      filename: "[name]-[hash].js",
+      //filename: "[name]-[hash].js",
+      filename: "[name].js",
       publicPath: 'http://localhost:3000/assets/bundles/'
   },
 
