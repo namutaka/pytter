@@ -1,0 +1,84 @@
+{% extends 'tweet/base.html' %}
+
+{% block content %}
+<style>
+  .collection .collection-item.avatar {
+    min-height: 42px;
+    padding-left: 52px;
+  }
+
+  .collection .collection-item.avatar:not(.circle-clipper)>.circle,
+  .collection .collection-item.avatar :not(.circle-clipper)>.circle {
+    width: 21px;
+    height: 21px;
+  }
+
+  .collection .collection-item.avatar .avatar-initial {
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 21px;
+  }
+
+  .collection .collection-item.avatar .secondary-content {
+    top: 12px;
+  }
+</style>
+<section>
+  <div class="container">
+
+    <div class="row">
+      <div class="col s12 section">
+        <div>
+          <b>following:</b>
+
+          {% for acc in follows %}
+          <div class="chip">
+            {{ acc.name }}
+          </div>
+          {% empty %}
+          なし
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+    <section>
+      <h5>ユーザ一覧</h5>
+
+      <div class="row">
+        <div class="col s12 section">
+
+          <ul class="collection">
+
+            {% for acc in accounts %}
+              <li class="collection-item avatar">
+                <span class="circle avatar-initial orange white-text">
+                  {{ acc.name | first | upper }}
+                </span>
+                <span class="title">
+                  {{ acc.display_name }}
+                  <small class="gray-text">@{{ acc.name }}</small>
+                </span>
+                <a href="{% url 'tweet:toggle_follow' acc.id %}" class="secondary-content">
+                  {% if acc in follows %}
+                    フォローをはずす
+                  {% else %}
+                    フォローする
+                  {% endif %}
+                </a>
+              </li>
+            {% empty %}
+              なし
+            {% endfor %}
+          </ul>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</section>
+{% endblock %}

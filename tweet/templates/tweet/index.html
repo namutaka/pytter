@@ -3,32 +3,21 @@
 {% block content %}
 <section>
   <div class="container">
-    <div id="content">
+    <div class="row">
+      <div class="col s12">
+        <span  class="grey-text">Following:</span>
+        <b>{{ follows | length }}</b>
 
-      <div>
-        <strong>follows:</strong>
+        &nbsp;&nbsp;
 
-       {% for acc in follows %}
-          <div class="chip">
-            {{ acc.name }}
-          </div>
-        {% endfor %}
+        <span  class="grey-text">Followers:</span>
+        <b>{{ followers | length }}</b>
+
       </div>
-
-      <div>
-        <strong>followers:</strong>
-
-        {% for acc in followers %}
-        <div class="chip">
-          {{ acc.name }}
-        </div>
-        {% endfor %}
-      </div>
-
-
-      <div id="root"></div>
-
     </div>
+
+    <div id="root"></div>
+
   </div>
 </section>
 {% endblock %}

@@ -37,8 +37,11 @@ class TweetPostForm extends Component {
         />
         <RaisedButton
           label="Tweet"
+          primary={true}
+          className="right"
           onClick={this.handleSubmit}
         />
+        <div className="clearfix" />
       </form>
     );
   }
