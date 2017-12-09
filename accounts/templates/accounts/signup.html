@@ -1,0 +1,49 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <section class="section">
+
+      <form action="{% url 'accounts:signup' %}" method="post" role="form">
+        {% csrf_token %}
+
+        <div class="row">
+          <div class="col s6 offset-s3">
+            {% for field in form %}
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">account_circle</i>
+                  {{ field }}
+                  {{ field.label_tag }}
+
+                  {% comment %}
+                  {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small>
+                  {% endif %}
+                  {% endcomment %}
+
+                  {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+
+            <div class="row">
+              <div class="col s12">
+                <button type="submit" class="btn waves-effect waves-light">
+                  <i class="material-icons left">power_settings_new</i>Signup
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+
+    </section>
+  </div>
+</section>
+{% endblock %}

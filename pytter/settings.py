@@ -125,7 +125,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = '/tweet/'
+
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),

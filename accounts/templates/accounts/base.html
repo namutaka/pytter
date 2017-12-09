@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load render_bundle from webpack_loader %}
+<html lang="ja">
+<head>
+  <title>{% block title %}Twitter clone{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <script src="{% url 'js_reverse' %}" type="text/javascript"></script>
+
+  <style>
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  header {
+    height: 64px;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  section {
+    margin-top: 1.5em;
+  }
+  </style>
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Twitter?</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<footer class="page-footer">
+  <div class="footer-copyright">
+    <div class="container">
+      © Copyright
+    </div>
+  </div>
+</footer>
+</body>
+</html>

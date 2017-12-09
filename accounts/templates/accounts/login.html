@@ -1,36 +1,69 @@
-{% extends "admin/base.html" %}
+{% extends "accounts/base.html" %}
 
 {% block content %}
+<section>
+  <div class="container">
+    <section class="section">
 
-{% if form.errors  %}
-  <div class="alert alert-danger" role="alert">
-    <p>Your usernamne and password didn't match. Please try again.</p>
-  </div>
-{% endif %}
+      <form action="{% url 'accounts:login' %}" method="post" role="form">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ next }}"/>
 
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title text-center">Log-in to mysite</h3>
-  </div>
-  <div class="panel-body">
-    <form action="{% url 'accounts:login' %}" method="post" role="form">
-      {% csrf_token %}
-      <div class="input-group" style="margin-bottom:10px">
-        <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-        <input id="id_username" name="username" type="text" value=""
-          maxlength="256" placeholder="Username"
-          aria-describedby="sizing-addon1" autofocus required/>
+        {% if form.errors  %}
+          <div class="row">
+            <div class="col s8 offset-s2">
+              <div class="alert alert-danger" role="alert">
+                <p>Your usernamne and password didn't match. Please try again.</p>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="row">
+          <div class="col s6 offset-s3">
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="username" name="username" type="text" value=""
+                  maxlength="256" autofocus required/>
+                <label for="username">Username</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">vpn_key</i>
+                <input id="password" name="password" type="password" value=""
+                  maxlength="256" required/>
+                <label for="password">Password</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <button type="submit" class="btn waves-effect waves-light">
+                  <i class="material-icons left">power_settings_new</i>Login
+                </button>
+
+                <a class="btn waves-effect waves-light blue right"
+                   href="{% url 'accounts:signup' %}">
+                  <i class="material-icons left">person_add</i>Signup
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+
+      <div class="row section">
+        <div class="col s6 offset-s3">
+        </div>
       </div>
-      <div class="input-group" style="margin-bottom:10px">
-        <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-        <input id="id_password" name="password" type="password" value=""
-          maxlength="256" placeholder="Pasword"
-          aria-describedby="sizing-addon1" required/>
-      </div>
 
-      <button type="submit" style="margin-bottom:-20px"><i class="fa fa-sign-in">Login</i></button>
-      <input name="next" type="hidden" value="{{ next }}"/>
-    </form>
+    </section>
   </div>
-</div>
+</section>
 {% endblock %}
