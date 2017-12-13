@@ -28,8 +28,11 @@
   "scripts": {
     "_start": "react-scripts start",
     "start": "webpack-dev-server",
-    "build": "react-scripts build",
+    "_build": "react-scripts build",
+    "build": "NODE_ENV=production webpack -p --bail  --progress",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+
+    "heroku-postbuild": "npm run build"
   }
 }

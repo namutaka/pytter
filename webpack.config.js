@@ -2,23 +2,16 @@ var path = require("path")
 var webpack = require('webpack')
 var BundleTracker = require('webpack-bundle-tracker')
 
-module.exports = {
+var webpack_config = {
   context: __dirname,
 
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-
     'babel-polyfill',
-    'react-hot-loader/patch',
     './assets/src/index.js',
   ],
 
   output: { // コンパイルされたファイルの設定
       path: path.resolve('./assets/bundles/'),
-      //filename: "[name]-[hash].js",
-      filename: "[name].js",
-      publicPath: 'http://localhost:3000/assets/bundles/'
   },
 
   module: {
@@ -93,9 +86,6 @@ module.exports = {
       Colors: ['material-ui/styles', 'colors'],
     }),
 
-    // local
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),  // don't reload if there is an error
   ],
 
   // webpack-dev-server向け設定
@@ -109,3 +99,24 @@ module.exports = {
   },
   devtool: 'cheap-module-eval-source-map',
 }
+
+if (process.env.NODE_ENV === 'production') {
+  webpack_config.output.filename = '[name]-[hash].js'
+  webpack_config.output.publicPath = ''
+
+} else {
+  webpack_config.output.filename = "[name].js",
+  webpack_config.output.publicPath = 'http://localhost:3000/assets/bundles/'
+
+  webpack_config.entry.unshift(
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    'react-hot-loader/patch'
+  )
+  webpack_config.plugins.shift(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()  // don't reload if there is an error
+  )
+}
+
+module.exports = webpack_config
