@@ -40,6 +40,7 @@ class Tweet(models.Model):
     text = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
+
     retweet_from = models.ForeignKey(
         'Tweet',
         on_delete=models.CASCADE,
