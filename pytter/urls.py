@@ -19,8 +19,8 @@ import django_js_reverse.views
 
 urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^tweet/', include('tweet.urls')),
     url(r'^api/tweets', include('tweet_api.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^jsreverse/$', django_js_reverse.views.urls_js, name='js_reverse'),
+    url(r'^', include('tweet.urls')),
 ]
