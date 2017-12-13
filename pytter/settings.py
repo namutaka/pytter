@@ -25,7 +25,7 @@ SECRET_KEY = 'pcwu6nht@d-367f0#r^3x8-!101s8w*u@zw@6u0hw$&h9&tvk3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -157,3 +157,7 @@ LOGGING = {
        },
    },
 }
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
