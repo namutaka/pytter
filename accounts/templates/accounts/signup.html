@@ -13,7 +13,9 @@
             {% for field in form %}
               <div class="row">
                 <div class="input-field col s12">
-                  <i class="material-icons prefix">account_circle</i>
+                  <i class="material-icons prefix">
+                    {% cycle 'account_circle' 'vpn_key' 'vpn_key' %}
+                  </i>
                   {{ field }}
                   {{ field.label_tag }}
 
@@ -29,6 +31,16 @@
                 </div>
               </div>
             {% endfor %}
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">face</i>
+                <input id="displayname" type="text"
+                       name="displayname" value="{{ displayName }}"
+                       maxlength="256" required/>
+                <label for="displayname">名前</label>
+              </div>
+            </div>
 
             <div class="row">
               <div class="col s12">

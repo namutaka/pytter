@@ -43,6 +43,7 @@
   <header>
     <nav>
       <div class="nav-wrapper">
+
         <a href="{% url 'tweet:index' %}" class="brand-logo center">Pytter</a>
 
         <ul class="right">
@@ -55,6 +56,7 @@
           <li>
             <a href="{% url 'tweet:who_to_follow' %}" >
               <i class="material-icons left">person_add</i>
+              フォロー
             </a>
           </li>
 
@@ -62,7 +64,9 @@
             <a class="dropdown-button" href="#!"
                data-activates="dropdown__account">
               <i class="material-icons left">account_circle</i>
-              {{ request.user.username }}
+
+              {{ request.user.account.display_name }}
+              ( @{{ request.user.account.name }} )
               <i class="material-icons right">arrow_drop_down</i>
             </a>
           </li>
