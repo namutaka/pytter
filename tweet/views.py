@@ -8,13 +8,8 @@ def index(request):
     account = request.user.account
     follows = account.follows.all()
     followers = account.followers.all()
-    tweets = Tweet.objects.filter(
-        Q(author__follower = account) | \
-        Q(author = account)
-    ).order_by('-created_at')
 
     return render(request, 'tweet/index.html', {
-        'tweets': tweets,
         'follows': follows,
         'followers': followers,
     })
