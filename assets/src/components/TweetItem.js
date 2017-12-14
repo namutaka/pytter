@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedRelative } from 'react-intl'
+import { ColorUtil } from '../utils'
 
 class TweetItem extends Component {
   static propTypes = {
@@ -19,6 +20,7 @@ class TweetItem extends Component {
           <Avatar
             size={30}
             style={{margin: '10px 5px'}}
+            backgroundColor={ ColorUtil.text2color(tweet.author.name) }
           >
           {tweet.author.name[0].toUpperCase()}
           </Avatar>
