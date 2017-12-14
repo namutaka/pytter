@@ -18,7 +18,7 @@ def index(request):
 def who_to_follow(request):
     account = request.user.account
     follows = account.follows.all()
-    accounts = Account.objects.all()
+    accounts = Account.objects.exclude(pk=account.pk)
 
     return render(request, 'tweet/who_to_follow.html', {
         'follows': follows,
