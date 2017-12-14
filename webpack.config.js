@@ -113,7 +113,7 @@ if (process.env.NODE_ENV === 'production') {
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch'
   )
-  webpack_config.plugins.shift(
+  webpack_config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()  // don't reload if there is an error
   )
