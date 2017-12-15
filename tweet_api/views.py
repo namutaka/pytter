@@ -8,7 +8,7 @@ def tweets(request):
     account = request.user.account
 
     tweets = Tweet.objects.filter(
-        Q(author__follower = account) | \
+        Q(author__in = Account.objects.filter(follows = account)) | \
         Q(author = account)
     )
 
